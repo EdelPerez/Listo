@@ -1,0 +1,15 @@
+name: Release
+
+on:
+  push:
+    branches: [ 'release' ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - run: docker build . --file Dockerfile --tag edelp/listo
+    - run: echo "${{secrets.DOCKER_PAT}}" | docker login -u "${{secrets.DOCKER_USER}}" --password stdin
+    - run: docker push edelp/listo
