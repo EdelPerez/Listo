@@ -69,6 +69,7 @@ class Listo(object):
                         'description': self._format_description(anime['media']['description']),
                         'studio': studio[0]['name'] if studio else 'N/A',
                         'aniLink': f"https://anilist.co/anime/{anime['media']['id']}",
+                        'color': 5814783 if anime['media']['isAdult'] else 2400351
                     }
                 )
 
@@ -160,7 +161,7 @@ class Listo(object):
                 "title": anime['title'],
                 "description": anime['description'],
                 "url": anime['aniLink'],
-                "color": 16734296,
+                "color": anime['color'],
                 "fields": [
                     {
                     "name": "Episode",
