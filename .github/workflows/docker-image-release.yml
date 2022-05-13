@@ -11,5 +11,5 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - run: docker build . --file Dockerfile --tag edelp/listo
-    - run: echo "${{secrets.DOCKER_PAT}}" | docker login -u "${{secrets.DOCKER_USER}}" --password stdin
+    - run: echo "${{secrets.DOCKER_PAT}}" | docker login -u "${{secrets.DOCKER_USER}}" --password-stdin
     - run: docker push edelp/listo
